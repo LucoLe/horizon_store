@@ -1,21 +1,31 @@
 # HorizonStore
 
-**TODO: Add description**
+## About
+This is an MVP for a store checkout feature. These are the current capabilites of the store:
+- The available products are build by parsing a json config.
+- A user can scan products and that will add them to a basket.
+- A user can calculate the total of the products in the basket. The total will apply discounts if the content of the
+  basket quialifies for any discount.
 
-## Installation
+## Running the application locally
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `horizon_store` to your list of dependencies in `mix.exs`:
+1. Clone the repo.
+2. Run `mix deps.get`
+3. Test the implementation in the console - `iex -S mix`
 
-```elixir
-def deps do
-  [
-    {:horizon_store, "~> 0.1.0"}
-  ]
-end
+## Testing
+
+The application has a suit of ExUnit tests. To run the whole suit use:
+
+```bash
+mix test
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/horizon_store>.
+To speed up the development you can use:
 
+```bash
+mix test --stale --listen-on-stdin
+```
+
+This will run the whole suit the first time and will listen for an enter. When you hit enter only tests using stale
+components or tests that were changed will be run. For more information see `mix help test`.
