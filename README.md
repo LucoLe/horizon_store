@@ -7,6 +7,8 @@ This is an MVP for a store checkout feature. These are the current capabilites o
 - A user can calculate the total of the products in the basket. The total will apply discounts if the content of the
   basket quialifies for any discount.
 
+For more information about the project have a looc at the [challange.md](challange.md)
+
 ## Running the application locally
 
 1. Clone the repo.

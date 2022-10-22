@@ -5,9 +5,9 @@ defmodule HorizonStore.CheckoutTest do
   setup do
     [
       basket: %Basket{},
-      voucher: Product.find_by_code("VOUCHER"),
-      t_shirt: Product.find_by_code("TSHIRT"),
-      mug: Product.find_by_code("MUG")
+      voucher: Product.find_by(code: "VOUCHER"),
+      t_shirt: Product.find_by(code: "TSHIRT"),
+      mug: Product.find_by(code: "MUG")
     ]
   end
 

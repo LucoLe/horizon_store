@@ -5,36 +5,38 @@ defmodule HorizonStore.BasketTest do
   setup do
     [
       basket: %Basket{},
-      products: Product.all()
+      voucher: Product.find_by(code: "VOUCHER"),
+      t_shirt: Product.find_by(code: "TSHIRT")
     ]
   end
 
   describe "add_product/2" do
-    test "adds product to the basket", %{basket: basket, products: [first_product | _]} do
-      assert Basket.add_product(basket, first_product) == %Basket{products: %{first_product => 1}}
+    test "adds product to the basket", %{basket: basket, voucher: voucher} do
+      assert Basket.add_product(basket, voucher) == %Basket{products: %{voucher => 1}}
     end
 
     test "updates basket by adding a different product", %{
       basket: basket,
-      products: [first_product, second_product, _]
+      voucher: voucher,
+      t_shirt: t_shirt
     } do
-      expected = %Basket{products: %{first_product => 1, second_product => 1}}
+      expected = %Basket{products: %{voucher => 1, t_shirt => 1}}
 
       basket =
         basket
-        |> Basket.add_product(first_product)
-        |> Basket.add_product(second_product)
+        |> Basket.add_product(voucher)
+        |> Basket.add_product(t_shirt)
 
       assert basket == expected
     end
 
-    test "increments product quantity", %{basket: basket, products: [first_product | _]} do
+    test "increments product quantity", %{basket: basket, voucher: voucher} do
       basket =
         basket
-        |> Basket.add_product(first_product)
-        |> Basket.add_product(first_product)
+        |> Basket.add_product(voucher)
+        |> Basket.add_product(voucher)
 
-      assert basket.products[first_product] == 2
+      assert basket.products[voucher] == 2
     end
   end
 end

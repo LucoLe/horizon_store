@@ -7,7 +7,7 @@ defmodule HorizonStore.Checkout do
 
   @spec scan(Basket.t(), String.t()) :: Basket.t()
   def scan(%Basket{} = basket, code) do
-    with %Product{} = product <- Product.find_by_code(code) do
+    with %Product{} = product <- Product.find_by(code: code) do
       Basket.add_product(basket, product)
     else
       _ -> basket

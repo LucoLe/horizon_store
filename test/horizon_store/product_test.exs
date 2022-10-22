@@ -2,19 +2,13 @@ defmodule HorizonStore.ProductTest do
   use ExUnit.Case, async: true
   alias HorizonStore.Product
 
-  describe "find_by_code/1" do
-    test "returns product" do
-      assert %Product{} = Product.find_by_code("VOUCHER")
+  describe "find_by/1" do
+    test "returns a product from state" do
+      assert %Product{code: "VOUCHER"} = Product.find_by(code: "VOUCHER")
     end
 
     test "returns nil for unknown product code" do
-      assert Product.find_by_code("a") == nil
-    end
-  end
-
-  describe "all/0" do
-    test "returns all products" do
-      assert Enum.all?(Product.all(), fn product -> %Product{} = product end)
+      assert Product.find_by(code: "a") == nil
     end
   end
 end
